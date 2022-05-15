@@ -17,8 +17,19 @@ export const Next: React.FC<Props> = ({
   }, []);
 
   const handleKBNext = (e: KeyboardEvent) => {
-    if (e.code === "ArrowRight") {
-      window.location.href = href;
+    switch (e.code) {
+      case "ArrowRight":
+        window.location.href = href;
+        break;
+      case "ArrowLeft":
+        window.history.back();
+        break;
+      case "Home":
+        window.location.href = "/";
+        break;
+      default:
+        console.log("keydown: ", e.code);
+        return;
     }
   };
 
